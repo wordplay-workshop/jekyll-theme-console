@@ -2,6 +2,8 @@
 <header>
   <div class="menu">
     <ul>
+    <a href="javascript:;" id="change-theme-btn-0" style="float:left; text-decoration:none;">&#128262;</a>
+    <a href="javascript:;" id="change-theme-btn-1" style="display:none; float:left; text-decoration:none;">&#127769;</a>
       {%- for path in page_paths -%}
         {%- assign my_page = site.pages | where: "path", path | first -%}
         {%- if my_page.title -%}
@@ -9,5 +11,24 @@
         {%- endif -%}
       {%- endfor -%}
     </ul>
+    <script>
+      const STYLES = ['/assets/main-hacker.css', '/assets/main-light.css'];
+
+      theme = 0;
+      let changeTheme1 = () => {
+        const currentBtn = document.getElementById('change-theme-btn-' + theme);
+        theme = (theme + 1) % 2;
+        const nextBtn = document.getElementById('change-theme-btn-' + theme);
+
+        currentBtn.style.display = 'none';
+        nextBtn.style.display = 'block';
+
+        document.getElementsByTagName('link')[1].setAttribute('href', STYLES[theme]);
+      };
+
+      document.getElementById('change-theme-btn-0').addEventListener('click', changeTheme1);
+      document.getElementById('change-theme-btn-1').addEventListener('click', changeTheme1);
+    </script>
+
   </div>
 </header>
