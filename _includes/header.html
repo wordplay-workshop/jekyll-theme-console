@@ -1,7 +1,7 @@
 {%- assign page_paths = site.header_pages | default: default_paths -%}
 <header>
   <div class="menu">
-    <ul>
+    <ul style="text-align: center">
     <a class="future future-header" href="https://wordplay-workshop.github.io/modern/">2020s ›››</a>
       {%- for path in page_paths -%}
         {%- assign my_page = site.pages | where: "path", path | first -%}
